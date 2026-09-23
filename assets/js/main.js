@@ -26,6 +26,22 @@
     a.setAttribute("href", "mailto:" + addr);
     var label = a.querySelector("[data-email-text]");
     if (label) label.textContent = addr;
+    /* In the footer, add a Copy button: a mailto link only opens an email app if the
+       visitor's computer has one set up, so copying is the reliable fallback. */
+    if (a.closest(".site-footer") && navigator.clipboard) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "copy-email";
+      btn.textContent = "Copy";
+      btn.setAttribute("aria-label", "Copy email address");
+      btn.addEventListener("click", function () {
+        navigator.clipboard.writeText(addr).then(function () {
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+        });
+      });
+      a.insertAdjacentElement("afterend", btn);
+    }
   });
 
   /* ---------- Photo gallery: one photo at a time ---------- */
