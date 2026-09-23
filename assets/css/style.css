@@ -400,3 +400,7 @@ details.more .more-body { padding-top: 1rem; max-width: var(--measure); }
 .timeline ul { list-style: disc; }
 .facts--wide { grid-template-columns: 14rem 1fr; margin-top: 0; }
 @media (max-width: 560px) { .facts--wide { grid-template-columns: 1fr; } }
+
+/* Copy-email button in the footer */
+.copy-email { font: 500 .8rem var(--sans); color: var(--teal); background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; padding: .1rem .5rem; margin-left: .45rem; cursor: pointer; vertical-align: middle; }
+.copy-email:hover { border-color: var(--teal); }
